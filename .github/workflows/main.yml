@@ -2,16 +2,24 @@ name: bot
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: # Allows you to start it manually
+  workflow_dispatch: 
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install
-      - run: node index.js
+          # Removed the "cache" line that caused the error
+          
+      - name: Install Dependencies
+        run: npm install mineflayer
+
+      - name: Run Bot
+        run: node index.js
+        env:
+          BOT_PASSWORD: ${{ secrets.BOT_PASSWORD }}
