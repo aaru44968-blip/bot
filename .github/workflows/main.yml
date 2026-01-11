@@ -1,25 +1,16 @@
-name: bot
+name: My First Action
+# 1. Trigger: Run this every time code is pushed to the 'main' branch
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: 
 
+# 2. Jobs: What the bot/server should actually do
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  say-hello:
+    runs-on: ubuntu-latest # Use a virtual machine hosted by GitHub
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          # Removed the "cache" line that caused the error
-          
-      - name: Install Dependencies
-        run: npm install mineflayer
+      - name: Checkout Code
+        uses: actions/checkout@v4 # Downloads your repo files onto the runner
 
-      - name: Run Bot
-        run: node index.js
-        env:
-          BOT_PASSWORD: ${{ secrets.BOT_PASSWORD }}
+      - name: Run a Script
+        run: echo "The Action is running successfully!"
