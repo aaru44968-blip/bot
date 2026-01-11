@@ -8,11 +8,12 @@ http.createServer((req, res) => {
 }).listen(process.env.PORT || 3000);
 
 const botArgs = {
-    host: 'infernomc.progamer.me', // Change this
-    port: 25565,             
-    username: 'Spectator',   // Bot's name
-    password: 'spectator123', // Bot's password
-    version: '1.20.1'        // Set to your server version
+    host: '57.128.115.134', 
+    port: 27811,                  
+    username: 'Spectator',
+    password: 'spectator123',
+    version: '1.20.1', // Ensure this is correct!
+    connectTimeout: 60000 // Give it 60 seconds to connect
 };
 
 function createBot() {
